@@ -30,6 +30,17 @@
 
     " Basics {
         set nocompatible        " Must be first line
+
+        " The default leader is '\', but many people prefer ',' as it's in a standard
+        " location. To override this behavior and set it back to '\' (or any other
+        " character) modify the following:
+        "
+        " XXX: must put let mapleader statement right at the beginning,
+        " otherwise it won't work!
+        "
+        let mapleader = ','
+        "   let maplocalleader = ','
+
         if !WINDOWS()
             set shell=/bin/sh
         endif
@@ -232,6 +243,7 @@
     " Make sure you use single quotes
 
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    nmap <leader>n :NERDTreeToggle<CR>
     "The NERD tree allows you to explore your filesystem and to open
     "files and directories. It presents the filesystem to you in the
     "form of a tree which you manipulate with the keyboard and/or
@@ -313,20 +325,6 @@
     call InitializeDirectories()
     " }
 
-    " Initialize NERDTree as needed {
-    function! NERDTreeInitAsNeeded()
-        redir => bufoutput
-        buffers!
-        redir END
-        let idx = stridx(bufoutput, "NERD_tree")
-        if idx > -1
-            NERDTreeMirror
-            NERDTreeFind
-            wincmd l
-        endif
-    endfunction
-    " }
-
     " Shell command {
     function! s:RunShellCommand(cmdline)
         botright new
@@ -353,12 +351,6 @@
 " }
 
 " Key (re)Mappings {
-
-    " The default leader is '\', but many people prefer ',' as it's in a standard
-    " location. To override this behavior and set it back to '\' (or any other
-    " character) modify the following:
-    "   let mapleader = ','
-    "   let maplocalleader = '_'
 
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
