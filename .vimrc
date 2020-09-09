@@ -212,10 +212,7 @@
     "set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-    " Remove trailing whitespaces and ^M chars
-    " To disable the stripping of whitespace, add the following:
-    "   let g:spf13_keep_trailing_whitespace = 1
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+
     "autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
@@ -258,6 +255,12 @@
     "best Git wrapper of all time.
 
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+
+    Plug 'ntpeters/vim-better-whitespace'
+    "This plugin causes all trailing whitespace characters to be highlighted.
+    "Whitespace for the current line will not be highlighted while in insert mode.
+    "It is possible to disable current line highlighting while in other modes as well.
+    "A helper function :StripWhitespace is also provided to make whitespace cleaning painless.
 
     " Initialize plugin system
     call plug#end()
@@ -321,20 +324,6 @@
             NERDTreeFind
             wincmd l
         endif
-    endfunction
-    " }
-
-    " Strip whitespace {
-    function! StripTrailingWhitespace()
-        " Preparation: save last search, and cursor position.
-        let _s=@/
-        let l = line(".")
-        let c = col(".")
-        " do the business:
-        %s/\s\+$//e
-        " clean up: restore previous search history, and cursor position
-        let @/=_s
-        call cursor(l, c)
     endfunction
     " }
 
