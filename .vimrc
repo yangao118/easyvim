@@ -273,6 +273,16 @@
     "powerful and intuitive enough for an existing Vim user.
     "vim-multiple-cursors is yet another attempt at that.
 
+    Plug 'majutsushi/tagbar'
+    "nmap <F8> :TagbarToggle<CR>
+    nmap <leader>tt :TagbarToggle<CR>
+    "Tagbar is a Vim plugin that provides an easy way to browse
+    "the tags of the current file and get an overview of its
+    "structure. It does this by creating a sidebar that displays
+    "the ctags-generated tags of the current file, ordered by
+    "their scope. This means that for example methods in C++ are
+    "displayed under the class they are defined in.
+
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
     Plug 'ntpeters/vim-better-whitespace'
