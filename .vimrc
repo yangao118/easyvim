@@ -266,6 +266,13 @@
     "I'm not going to lie to you; fugitive.vim may very well be the
     "best Git wrapper of all time.
 
+    Plug 'terryma/vim-multiple-cursors'
+    "There have been many attempts at bringing Sublime Text's awesome
+    "multiple selection feature into Vim, but none so far have been in
+    "my opinion a faithful port that is simplistic to use, yet
+    "powerful and intuitive enough for an existing Vim user.
+    "vim-multiple-cursors is yet another attempt at that.
+
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
     Plug 'ntpeters/vim-better-whitespace'
