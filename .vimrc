@@ -250,7 +250,6 @@
     "mouse. It also allows you to perform simple filesystem
     "operations.
 
-
     Plug 'itchyny/lightline.vim'
     let g:lightline = {
       \ 'active': {
@@ -265,6 +264,31 @@
     Plug 'tpope/vim-fugitive'
     "I'm not going to lie to you; fugitive.vim may very well be the
     "best Git wrapper of all time.
+
+    Plug 'tpope/vim-surround'
+    "Surround.vim is all about "surroundings": parentheses, brackets,
+    "quotes, XML tags, and more. The plugin provides mappings to
+    "easily delete, change and add such surroundings in pairs.
+    "e.g. use ds* to delete a word surrounded by *.
+
+    Plug 'tpope/vim-commentary'
+    "Comment stuff out. Use gcc to comment out a line (takes a count),
+    "gc to comment out the target of a motion (for example, gcap to
+    "comment out a paragraph), gc in visual mode to comment out the
+    "selection, and gc in operator pending mode to target a comment.
+    "You can also use it as a command, either with a range like
+    ":7,17Commentary, or as part of a :global invocation like with
+    ":g/TODO/Commentary. That's it.
+    "
+    "alternatives: preservim/nerdcommenter, not good for nested comments.
+
+    Plug 'tpope/vim-repeat'
+    "If you've ever tried using the . command after a plugin map, you
+    "were likely disappointed to discover it only repeated the last
+    "native command inside that map, rather than the map as a whole.
+    "That disappointment ends today. Repeat.vim remaps . in a way that
+    "plugins can tap into it.
+
 
     Plug 'terryma/vim-multiple-cursors'
     "There have been many attempts at bringing Sublime Text's awesome
