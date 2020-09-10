@@ -345,11 +345,11 @@
     "The ultimate undo history visualizer for VIM
     nnoremap <F5> :UndotreeToggle<cr>
 
-    " if has('nvim') || has('patch-8.0.902')
-    "     Plug 'mhinz/vim-signify'
-    " else
-    "     Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
-    " endif
+    if has('nvim') || has('patch-8.0.902')
+        Plug 'mhinz/vim-signify'
+    else
+        Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+    endif
     "Signify (or just Sy) is a quite unobtrusive plugin. It uses signs
     "to indicate added, modified and removed lines based on data of an
     "underlying version control system.
@@ -357,11 +357,9 @@
     "It's fast, easy to use and well documented.
     "
     "NOTE: If git is the only version control system you use, I
-    "suggest having a look at vim-gitgutter. It provides more
-    "git-specific features that would be unfeasible for Sy, since it
-    "only implements features that work for all supported VCS.
+    "suggest having a look at vim-gitgutter.
     "
-    Plug 'airblade/vim-gitgutter'
+    " Plug 'airblade/vim-gitgutter'
     set updatetime=1000
 
     Plug 'haya14busa/is.vim'
