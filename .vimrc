@@ -242,7 +242,7 @@
 
     " Make sure you use single quotes
 
-    Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
     nmap <leader>n :NERDTreeToggle<CR>
     "The NERD tree allows you to explore your filesystem and to open
     "files and directories. It presents the filesystem to you in the
@@ -282,8 +282,12 @@
     "the ctags-generated tags of the current file, ordered by
     "their scope. This means that for example methods in C++ are
     "displayed under the class they are defined in.
+    "
+    "alternatives: vim-scripts/taglist.vim
 
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+    "This plugin adds Go language support for Vim, comment it if you don't
+    "want golang support.
 
     Plug 'ntpeters/vim-better-whitespace'
     "This plugin causes all trailing whitespace characters to be highlighted.
