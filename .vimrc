@@ -391,6 +391,24 @@
     " Start interactive EasyAlign for a motion/text object (e.g. gaip)
     nmap ga <Plug>(EasyAlign)
 
+    Plug 'ludovicchabant/vim-gutentags'
+    "Gutentags is a plugin that takes care of the much needed management
+    "of tags files in Vim. It will (re)generate tag files as you work
+    "while staying completely out of your way. It will even do its best
+    "to keep those tag files out of your way too. It has no dependencies and just works.
+    set tags=./.tags;,.tags
+    let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+    let g:gutentags_ctags_tagfile = '.tags'
+    let s:vim_tags = expand('~/.cache/tags')
+    let g:gutentags_cache_dir = s:vim_tags
+    let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+    let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+    let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+    if !isdirectory(s:vim_tags)
+        silent! call mkdir(s:vim_tags, 'p')
+    endif
+
+
     Plug 'ntpeters/vim-better-whitespace'
     "This plugin causes all trailing whitespace characters to be highlighted.
     "Whitespace for the current line will not be highlighted while in insert mode.
