@@ -377,10 +377,12 @@
     let g:rainbow_active = 1
     "set to 0 if you want to enable it later via :RainbowToggle
 
-    Plug 'godlygeek/tabular'
+    " Plug 'godlygeek/tabular'
     "Sometimes, it's useful to line up text. Naturally, it's nicer to
     "have the computer do this for you, since aligning things by hand
     "quickly becomes unpleasant.
+    "
+    "alternatives: junegunn/vim-easy-align
 
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
     "This plugin adds Go language support for Vim, comment it if you don't
