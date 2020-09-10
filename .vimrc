@@ -289,13 +289,11 @@
     "That disappointment ends today. Repeat.vim remaps . in a way that
     "plugins can tap into it.
 
-
-    Plug 'terryma/vim-multiple-cursors'
-    "There have been many attempts at bringing Sublime Text's awesome
-    "multiple selection feature into Vim, but none so far have been in
-    "my opinion a faithful port that is simplistic to use, yet
-    "powerful and intuitive enough for an existing Vim user.
-    "vim-multiple-cursors is yet another attempt at that.
+    Plug 'mg979/vim-visual-multi'
+    "It's called vim-visual-multi in analogy with visual-block,
+    "but the plugin works mostly from normal mode.
+    "
+    "alternatives: 'terryma/vim-multiple-cursors': deprecated
 
     Plug 'majutsushi/tagbar'
     "nmap <F8> :TagbarToggle<CR>
@@ -308,6 +306,51 @@
     "displayed under the class they are defined in.
     "
     "alternatives: vim-scripts/taglist.vim
+
+    Plug 'ervandew/supertab'
+    "Supertab is a vim plugin which allows you to use <Tab> for all
+    "your insert completion needs (:help ins-completion).
+
+    Plug 'jiangmiao/auto-pairs'
+    "Insert or delete brackets, parens, quotes in pair.
+
+    Plug 'mbbill/undotree'
+    "The ultimate undo history visualizer for VIM
+    nnoremap <F5> :UndotreeToggle<cr>
+
+    " if has('nvim') || has('patch-8.0.902')
+    "     Plug 'mhinz/vim-signify'
+    " else
+    "     Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+    " endif
+    "Signify (or just Sy) is a quite unobtrusive plugin. It uses signs
+    "to indicate added, modified and removed lines based on data of an
+    "underlying version control system.
+    "
+    "It's fast, easy to use and well documented.
+    "
+    "NOTE: If git is the only version control system you use, I
+    "suggest having a look at vim-gitgutter. It provides more
+    "git-specific features that would be unfeasible for Sy, since it
+    "only implements features that work for all supported VCS.
+    "
+    Plug 'airblade/vim-gitgutter'
+    set updatetime=1000
+
+    Plug 'haya14busa/is.vim'
+    "is.vim improves search feature. is.vim is successor of incsearch.vim.
+
+    Plug 'luochen1990/rainbow'
+    "As everyone knows, the most complex codes were composed of a mass
+    "of different kinds of parentheses(typically: lisp). This plugin
+    "will help you read these codes by showing different levels of
+    "parentheses in different colors. you can also find this plugin in
+    "www.vim.org.
+
+    Plug 'godlygeek/tabular'
+    "Sometimes, it's useful to line up text. Naturally, it's nicer to
+    "have the computer do this for you, since aligning things by hand
+    "quickly becomes unpleasant.
 
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
     "This plugin adds Go language support for Vim, comment it if you don't
