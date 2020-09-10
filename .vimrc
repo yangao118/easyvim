@@ -348,6 +348,8 @@
     "will help you read these codes by showing different levels of
     "parentheses in different colors. you can also find this plugin in
     "www.vim.org.
+    let g:rainbow_active = 1
+    "set to 0 if you want to enable it later via :RainbowToggle
 
     Plug 'godlygeek/tabular'
     "Sometimes, it's useful to line up text. Naturally, it's nicer to
