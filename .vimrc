@@ -251,6 +251,9 @@
     "form of a tree which you manipulate with the keyboard and/or
     "mouse. It also allows you to perform simple filesystem
     "operations.
+    "
+    "Should use :edit . (built-in plugin netrw), see the following:
+    "http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
 
     Plug 'itchyny/lightline.vim'
     let g:lightline = {
@@ -408,6 +411,80 @@
         silent! call mkdir(s:vim_tags, 'p')
     endif
 
+    Plug 'ycm-core/YouCompleteMe'
+    "YouCompleteMe: a code-completion engine for Vim
+    "install: python3 install.py --clangd-completer --go-completer
+
+    "setup popup windows colorscheme
+    highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
+    highlight PMenuSel ctermfg=242 ctermbg=0 guifg=darkgrey guibg=black
+
+    let g:ycm_add_preview_to_completeopt = 0
+
+    " let g:ycm_show_diagnostics_ui = 0 "will also disable ale diagnostics
+    " disable ycm diagnostics, use ale
+    " let g:ycm_enable_diagnostic_signs = 0
+    " let g:ycm_enable_diagnostic_highlighting = 0
+
+    let g:ycm_server_log_level = 'info'
+    let g:ycm_min_num_identifier_candidate_chars = 2
+    let g:ycm_collect_identifiers_from_comments_and_strings = 1
+    let g:ycm_complete_in_strings=1
+    let g:ycm_key_invoke_completion = '<c-z>'
+    noremap <c-z> <NOP>
+    set completeopt=menu,menuone
+    let g:ycm_semantic_triggers =  {
+                \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+                \ 'cs,lua,javascript': ['re!\w{2}'],
+                \ }
+
+    Plug 'dense-analysis/ale'
+    "ALE (Asynchronous Lint Engine) is a plugin providing linting
+    "(syntax checking and semantic errors) in NeoVim 0.2.0+ and
+    "Vim 8 while you edit your text files, and acts as a Vim
+    "Language Server Protocol client.
+    let g:ale_linters_explicit = 1
+    let g:ale_completion_delay = 500
+    let g:ale_echo_delay = 20
+    let g:ale_lint_delay = 500
+
+    let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+    let g:ale_lint_on_text_changed = 'normal'
+    let g:ale_lint_on_insert_leave = 1
+    let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+    let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+    let g:ale_c_cppcheck_options = ''
+
+    nmap sp <Plug>(ale_previous_wrap)
+    nmap np <Plug>(ale_next_wrap)   let g:ale_cpp_cppcheck_options = ''
+
+    let g:ale_sign_error = "E"
+    let g:ale_sign_warning = "W"
+    hi! clear SpellBad
+    hi! clear SpellCap
+    hi! clear SpellRare
+    hi! SpellBad gui=undercurl guisp=red
+    hi! SpellCap gui=undercurl guisp=blue
+    hi! SpellRare gui=undercurl guisp=magenta
+
+
+    " Track the engine.
+    Plug 'SirVer/ultisnips'
+
+    " Snippets are separated from the engine. Add this if you want them:
+    Plug 'honza/vim-snippets'
+
+    " Trigger configuration. You need to change this to something else than <tab>
+    " if you use https://github.com/Valloric/YouCompleteMe.
+    let g:UltiSnipsExpandTrigger="<c-j>"
+
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    "This file contains additional syntax highlighting that I use for C++11/14/17 development in Vim.
+
+    Plug 'vivien/vim-linux-coding-style'
+    "This plugin is meant to help you respecting the Linux kernel coding style,
+    "described at: https://www.kernel.org/doc/Documentation/process/coding-style.rst
+    let g:linuxsty_patterns = [ "/linux" ]
 
     Plug 'ntpeters/vim-better-whitespace'
     "This plugin causes all trailing whitespace characters to be highlighted.
