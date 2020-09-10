@@ -297,9 +297,23 @@
     "
     "alternatives: 'terryma/vim-multiple-cursors': deprecated
 
-    Plug 'majutsushi/tagbar'
-    "nmap <F8> :TagbarToggle<CR>
-    nmap <leader>tt :TagbarToggle<CR>
+    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    " An efficient fuzzy finder that helps to locate files, buffers, mrus,
+    " gtags, etc. on the fly. ctrlp is out-of-date, fzf is hard to install.
+
+    let g:Lf_ShortcutF = '<c-p>'
+    noremap <leader>tt :LeaderfFunction!<cr>
+    let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+    let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+    let g:Lf_WorkingDirectoryMode = 'Ac'
+    let g:Lf_WindowHeight = 0.30
+    let g:Lf_CacheDirectory = expand('~/.vim/cache')
+    let g:Lf_ShowRelativePath = 0
+
+
+    " Plug 'majutsushi/tagbar'
+    " nmap <F8> :TagbarToggle<CR>
+    " nmap <leader>tt :TagbarToggle<CR>
     "Tagbar is a Vim plugin that provides an easy way to browse
     "the tags of the current file and get an overview of its
     "structure. It does this by creating a sidebar that displays
@@ -308,6 +322,8 @@
     "displayed under the class they are defined in.
     "
     "alternatives: vim-scripts/taglist.vim
+    "
+    "LeaderfFunction! cover this, tagbar or taglist isn't needed.
 
     Plug 'ervandew/supertab'
     "Supertab is a vim plugin which allows you to use <Tab> for all
