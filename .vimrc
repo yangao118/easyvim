@@ -324,6 +324,15 @@
     "alternatives: vim-scripts/taglist.vim
     "
     "LeaderfFunction! cover this, tagbar or taglist isn't needed.
+    if executable('ag')
+        Plug 'mileszs/ack.vim'
+        let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+    elseif executable('ack-grep')
+        let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+        Plug 'mileszs/ack.vim'
+    elseif executable('ack')
+        Plug 'mileszs/ack.vim'
+    endif
 
     Plug 'ervandew/supertab'
     "Supertab is a vim plugin which allows you to use <Tab> for all
