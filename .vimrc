@@ -44,6 +44,8 @@
         if !WINDOWS()
             set shell=/bin/sh
         endif
+
+        packadd! matchit
     " }
 
     " Windows Compatible {
@@ -364,9 +366,6 @@
 
     " Initialize plugin system
     call plug#end()
-
-    " Configuration for plugins
-
 " }
 
 " Functions {
