@@ -383,6 +383,14 @@
     "This plugin adds Go language support for Vim, comment it if you don't
     "want golang support.
 
+    Plug 'junegunn/vim-easy-align'
+    "A simple, easy-to-use Vim alignment plugin.
+    " Start interactive EasyAlign in visual mode (e.g. vipga)
+    xmap ga <Plug>(EasyAlign)
+
+    " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+    nmap ga <Plug>(EasyAlign)
+
     Plug 'ntpeters/vim-better-whitespace'
     "This plugin causes all trailing whitespace characters to be highlighted.
     "Whitespace for the current line will not be highlighted while in insert mode.
