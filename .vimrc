@@ -340,6 +340,8 @@
     Plug 'ervandew/supertab'
     "Supertab is a vim plugin which allows you to use <Tab> for all
     "your insert completion needs (:help ins-completion).
+    let g:SuperTabDefaultCompletionType = '<C-n>'
+    " let g:SuperTabRetainCompletionType = 2
 
     Plug 'jiangmiao/auto-pairs'
     "Insert or delete brackets, parens, quotes in pair.
@@ -395,6 +397,19 @@
 
     " Start interactive EasyAlign for a motion/text object (e.g. gaip)
     nmap ga <Plug>(EasyAlign)
+    " usage:
+    " 1.ga key in visual mode, or ga followed by a motion or a text object to start interactive mode
+    " 2.(Optional) Enter keys to cycle between alignment mode (left, right, or center)
+    " 3.(Optional) N-th delimiter (default: 1)
+    "     1 Around the 1st occurrences of delimiters
+    "     2 Around the 2nd occurrences of delimiters
+    "     ...
+    "     * Around all occurrences of delimiters
+    "     ** Left-right alternating alignment around all delimiters
+    "     - Around the last occurrences of delimiters (-1)
+    "     -2 Around the second to last occurrences of delimiters
+    "     ...
+    " 4.Delimiter key (a single keystroke; <Space>, =, :, ., |, &, #, ,) or an arbitrary regular expression followed by <CTRL-X>
 
     Plug 'ludovicchabant/vim-gutentags'
     "Gutentags is a plugin that takes care of the much needed management
@@ -406,7 +421,7 @@
     let g:gutentags_ctags_tagfile = '.tags'
     let s:vim_tags = expand('~/.cache/tags')
     let g:gutentags_cache_dir = s:vim_tags
-    let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+    let g:gutentags_ctags_extra_args = ['--fields=+lniazS', '--extra=+q']
     let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
     let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
     if !isdirectory(s:vim_tags)
@@ -421,47 +436,11 @@
     highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
     highlight PMenuSel ctermfg=242 ctermbg=0 guifg=darkgrey guibg=black
 
-    let g:ycm_add_preview_to_completeopt = 0
-
     " let g:ycm_show_diagnostics_ui = 0 "will also disable ale diagnostics
-    " disable ycm diagnostics, use ale
     " let g:ycm_enable_diagnostic_signs = 0
     " let g:ycm_enable_diagnostic_highlighting = 0
-
-    let g:ycm_server_log_level = 'info'
-    let g:ycm_min_num_identifier_candidate_chars = 2
-    let g:ycm_collect_identifiers_from_comments_and_strings = 1
-    let g:ycm_complete_in_strings=1
-    let g:ycm_key_invoke_completion = '<c-z>'
-    noremap <c-z> <NOP>
-    set completeopt=menu,menuone
-    let g:ycm_semantic_triggers =  {
-                \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-                \ 'cs,lua,javascript': ['re!\w{2}'],
-                \ }
-
-    Plug 'dense-analysis/ale'
-    "ALE (Asynchronous Lint Engine) is a plugin providing linting
-    "(syntax checking and semantic errors) in NeoVim 0.2.0+ and
-    "Vim 8 while you edit your text files, and acts as a Vim
-    "Language Server Protocol client.
-    let g:ale_linters_explicit = 1
-    let g:ale_completion_delay = 500
-    let g:ale_echo_delay = 20
-    let g:ale_lint_delay = 500
-
-    let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-    let g:ale_lint_on_text_changed = 'normal'
-    let g:ale_lint_on_insert_leave = 1
-    let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-    let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-    let g:ale_c_cppcheck_options = ''
-
-    nmap sp <Plug>(ale_previous_wrap)
-    nmap np <Plug>(ale_next_wrap)   let g:ale_cpp_cppcheck_options = ''
-
-    let g:ale_sign_error = "E"
-    let g:ale_sign_warning = "W"
+    let g:ycm_error_symbol = 'E'
+    let g:ycm_warning_symbol = 'W'
     hi! clear SpellBad
     hi! clear SpellCap
     hi! clear SpellRare
@@ -469,6 +448,26 @@
     hi! SpellCap gui=undercurl guisp=blue
     hi! SpellRare gui=undercurl guisp=magenta
 
+    let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
+    let g:ycm_confirm_extra_conf = 0
+    let g:ycm_auto_hover = ''
+
+    let g:ycm_min_num_identifier_candidate_chars = 2
+    let g:ycm_collect_identifiers_from_comments_and_strings = 1
+    let g:ycm_complete_in_strings = 1
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_collect_identifiers_from_tags_files = 1
+    let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+    let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+    let g:ycm_key_invoke_completion = '<c-z>'
+    noremap <c-z> <NOP>
+    let g:ycm_add_preview_to_completeopt = 0
+    set completeopt=menu,menuone
+
+    let g:ycm_semantic_triggers =  {
+                \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+                \ 'cs,lua,javascript': ['re!\w{2}'],
+                \ }
 
     " Track the engine.
     Plug 'SirVer/ultisnips'
@@ -479,6 +478,11 @@
     " Trigger configuration. You need to change this to something else than <tab>
     " if you use https://github.com/Valloric/YouCompleteMe.
     let g:UltiSnipsExpandTrigger="<c-j>"
+
+    Plug 'Shougo/echodoc.vim'
+    "Displays function signatures from completions in the command line
+    set cmdheight=2
+    let g:echodoc_enable_at_startup = 1
 
     Plug 'octol/vim-cpp-enhanced-highlight'
     "This file contains additional syntax highlighting that I use for C++11/14/17 development in Vim.
