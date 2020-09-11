@@ -503,7 +503,16 @@
     Plug 'vivien/vim-linux-coding-style'
     "This plugin is meant to help you respecting the Linux kernel coding style,
     "described at: https://www.kernel.org/doc/Documentation/process/coding-style.rst
-    let g:linuxsty_patterns = [ "/linux" ]
+    let g:linuxsty_patterns = [ "/usr/src/", "/linux" ]
+
+    Plug 'rhysd/vim-clang-format'
+    "This plugin formats your code with specific coding style using clang-format.
+    let g:clang_format#code_style = "google"
+    let g:clang_format#style_options = {
+                \ "AccessModifierOffset" : -1,
+                \ "AllowShortIfStatementsOnASingleLine" : "true",
+                \ "AlwaysBreakTemplateDeclarations" : "true",
+                \ "IndentWidth" : 2 }
 
     Plug 'ntpeters/vim-better-whitespace'
     "This plugin causes all trailing whitespace characters to be highlighted.
