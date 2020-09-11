@@ -469,6 +469,19 @@
                 \ 'cs,lua,javascript': ['re!\w{2}'],
                 \ }
 
+    Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+    " This is a script which generates a list of compiler flags from a project with an arbitrary build system. It can be used to:
+
+    " generate a .ycm_extra_conf.py file for use with YouCompleteMe
+    " generate a .color_coded file for use with color_coded
+    " It works by building the project with a fake toolchain, which simply and filters compiler flags to be stored in the resulting file.
+
+    " It is reasonably fast, taking ~10 seconds to generate a configuration file for the Linux kernel.
+    "
+    " You can also invoke it from within Vim using the :YcmGenerateConfig or :CCGenerateConfig commands
+    " to generate a config file for the current directory.
+
+
     " Track the engine.
     Plug 'SirVer/ultisnips'
 
