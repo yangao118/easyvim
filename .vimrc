@@ -464,6 +464,24 @@
     let g:ycm_add_preview_to_completeopt = 0
     set completeopt=menu,menuone
 
+    " diagnostics filter for linux kernel development
+    let g:ycm_filter_diagnostics = {
+                \ "c": {
+                \   "regex": [
+                \     "-mno-fp-ret-in-387",
+                \     "-mpreferred-stack-boundary=3",
+                \     "-mskip-rax-setup",
+                \     "-mindirect-branch=thunk-extern",
+                \     "-mindirect-branch-register",
+                \     "-fno-allow-store-data-races",
+                \     "-fplugin-arg-structleak_plugin-byref-all",
+                \     "-fno-var-tracking-assignments",
+                \     "-fconserve-stack",
+                \     "-mrecord-mcount"
+                \   ]
+                \ }
+                \}
+
     let g:ycm_semantic_triggers =  {
                 \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
                 \ 'cs,lua,javascript': ['re!\w{2}'],
@@ -480,13 +498,15 @@
     "
     " You can also invoke it from within Vim using the :YcmGenerateConfig or :CCGenerateConfig commands
     " to generate a config file for the current directory.
+    "
+    " alternatives: use "bear make" in project directory to generate
+    " generate compile_commands.json, which ycm could use instead.
 
-
-    " Track the engine.
     Plug 'SirVer/ultisnips'
+    " Track the engine.
 
-    " Snippets are separated from the engine. Add this if you want them:
     Plug 'honza/vim-snippets'
+    " Snippets are separated from the engine. Add this if you want them:
 
     " Trigger configuration. You need to change this to something else than <tab>
     " if you use https://github.com/Valloric/YouCompleteMe.
