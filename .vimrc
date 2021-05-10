@@ -305,7 +305,7 @@
     " gtags, etc. on the fly. ctrlp is out-of-date, fzf is hard to install.
 
     let g:Lf_ShortcutF = '<c-p>'
-    noremap <leader>tt :LeaderfFunction!<cr>
+    " noremap <leader>tt :LeaderfFunction!<cr>
     let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
     let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
     let g:Lf_WorkingDirectoryMode = 'Ac'
@@ -313,10 +313,21 @@
     let g:Lf_CacheDirectory = expand('~/.vim/cache')
     let g:Lf_ShowRelativePath = 0
 
+    " gtags settings:
+    "
+    " use gutentags to auto generate gtags, but use Leaderf gtags to invoke
+    " gtags instead of vim-scripts/gtags.vim, to do so, must also set
+    " gutentags' cache directory: g:gutentags_cache_dir to LeaderF's default
+    " gtags search path.
 
-    " Plug 'majutsushi/tagbar'
-    " nmap <F8> :TagbarToggle<CR>
-    " nmap <leader>tt :TagbarToggle<CR>
+    let g:Lf_GtagsAutoGenerate = 0
+    let g:Lf_GtagsGutentags = 1
+
+
+
+    Plug 'majutsushi/tagbar'
+    nmap <F8> :TagbarToggle<CR>
+    nmap <leader>tt :TagbarToggle<CR>
     "Tagbar is a Vim plugin that provides an easy way to browse
     "the tags of the current file and get an overview of its
     "structure. It does this by creating a sidebar that displays
@@ -326,7 +337,11 @@
     "
     "alternatives: vim-scripts/taglist.vim
     "
-    "LeaderfFunction! cover this, tagbar or taglist isn't needed.
+    "LeaderfFunction! could partially cover tagbar functionality, but not in
+    "the perfect way, turn on tagbar by default. In some cases, where the
+    "source code is huge, tagbar could cause a explicit lag, because tagbar
+    "will use ctags to generate tags for the current buffer. If this causes a
+    "problem, turn off tagbar by hand then.
 
     " if executable('ag')
     "     Plug 'mileszs/ack.vim'
@@ -420,17 +435,30 @@
     "of tags files in Vim. It will (re)generate tag files as you work
     "while staying completely out of your way. It will even do its best
     "to keep those tag files out of your way too. It has no dependencies and just works.
-    set tags=./.tags;,.tags
+    " set tags=./.tags;,.tags " gutentags will automatically set tags
     let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
     let g:gutentags_ctags_tagfile = '.tags'
-    let s:vim_tags = expand('~/.cache/tags')
-    let g:gutentags_cache_dir = s:vim_tags
+
+    let g:gutentags_modules = []
+    if executable('ctags')
+        let g:gutentags_modules += ['ctags']
+    endif
+    " enable gtags if available
+    if executable('gtags-cscope') && executable('gtags')
+        let g:gutentags_modules += ['gtags_cscope']
+    endif
+
+    " to use Leaderf gtags:
+    let g:gutentags_cache_dir = expand(g:Lf_CacheDirectory.'/.LfCache/gtags')
+    let g:gutentags_auto_add_gtags_cscope = 0
+
+    " for exuberant-ctags, remove --extra=+q
     let g:gutentags_ctags_extra_args = ['--fields=+lniazS', '--extra=+q']
     let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
     let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-    if !isdirectory(s:vim_tags)
-        silent! call mkdir(s:vim_tags, 'p')
-    endif
+
+    " for universal-ctags only
+    let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
     Plug 'ycm-core/YouCompleteMe'
     "YouCompleteMe: a code-completion engine for Vim
