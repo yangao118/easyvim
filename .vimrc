@@ -405,9 +405,16 @@
     "
     "alternatives: junegunn/vim-easy-align
 
-    Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+    " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
     "This plugin adds Go language support for Vim, comment it if you don't
     "want golang support.
+    "
+    " vim-go does not support GO111MODULE="auto" well, besides YouCompleteMe
+    " (when installed with --go-completer) will install and use its own gopls,
+    " by turning on vim-go, there might be two gopls running at the same time.
+    "
+    " Gtags for golang isn't ready yet, but the guru used by vim-go does not
+    " handle GO111MODULE="auto" either, so turn off vim-go by default.
 
     Plug 'junegunn/vim-easy-align'
     "A simple, easy-to-use Vim alignment plugin.
