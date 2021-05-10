@@ -307,7 +307,7 @@
     let g:Lf_ShortcutF = '<c-p>'
     " noremap <leader>tt :LeaderfFunction!<cr>
     let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
-    let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+    let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git', '.hg']
     let g:Lf_WorkingDirectoryMode = 'Ac'
     let g:Lf_WindowHeight = 0.30
     let g:Lf_CacheDirectory = expand('~/.vim/cache')
@@ -322,6 +322,12 @@
 
     let g:Lf_GtagsAutoGenerate = 0
     let g:Lf_GtagsGutentags = 1
+    let $GTAGSLABEL = 'native-pygments'
+
+    " use LeaderF to auto generate gtags
+    " let g:Lf_GtagsAutoGenerate = 1
+    " let Lf_GtagsGutentags = 0
+    " let g:Lf_Gtagslabel = 'native-pygments'
 
 
 
