@@ -411,7 +411,7 @@
     "
     "alternatives: junegunn/vim-easy-align
 
-    " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+    Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
     "This plugin adds Go language support for Vim, comment it if you don't
     "want golang support.
     "
@@ -421,6 +421,16 @@
     "
     " Gtags for golang isn't ready yet, but the guru used by vim-go does not
     " handle GO111MODULE="auto" either, so turn off vim-go by default.
+    "
+    " let g:go_def_mapping_enabled = 1
+    "
+    " Ah!!! I have to switch on fatih/vim-go, two gopls running is a cost we
+    " can afford. g:go_def_mapping_enabled will map CTRL+] to :GoDef, which
+    " works well with imported system packages, ctags won't work in that case.
+    "
+    " So we keep vim-go, if :GoDef failed, we use :tag CTRL+R CTRL+W to use
+    " ctags. gtags does not work well with golang, vim-go callers and callees
+    " does not work well with out-of-tree go projects, so much pain!
 
     Plug 'junegunn/vim-easy-align'
     "A simple, easy-to-use Vim alignment plugin.
