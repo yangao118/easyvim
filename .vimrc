@@ -430,7 +430,9 @@
     "
     " So we keep vim-go, if :GoDef failed, we use :tag CTRL+R CTRL+W to use
     " ctags. gtags does not work well with golang, vim-go callers and callees
-    " does not work well with out-of-tree go projects, so much pain!
+    " does not work well with go projects outside of GOPATH, so much pain!
+    "
+    " Aha, recipe for happy editing golang with vim: use go module!
 
     Plug 'junegunn/vim-easy-align'
     "A simple, easy-to-use Vim alignment plugin.
