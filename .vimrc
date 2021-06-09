@@ -582,14 +582,29 @@
     "described at: https://www.kernel.org/doc/Documentation/process/coding-style.rst
     let g:linuxsty_patterns = [ "/usr/src/", "/linux" ]
 
+    " The linux kernel coding style is quite different from GNU C style:
+    " First off, I’d suggest printing out a copy of the GNU coding standards, and NOT read it.
+    " Burn them, it’s a great symbolic gesture.
+    "                                       -- from Linux kernel coding style
+    " vivien/vim-linux-coding-style is like indent script, which does not
+    " autoload depending on file type, but depending on more other conditions.
+
     Plug 'rhysd/vim-clang-format'
     "This plugin formats your code with specific coding style using clang-format.
     let g:clang_format#code_style = "google"
-    let g:clang_format#style_options = {
-                \ "AccessModifierOffset" : -1,
-                \ "AllowShortIfStatementsOnASingleLine" : "true",
-                \ "AlwaysBreakTemplateDeclarations" : "true",
-                \ "IndentWidth" : 2 }
+
+    " Indent scripts take effects when editing, but those scripts are not
+    " perfect, we must use code formatter to comply with certain code style
+    " after editing. vim-clang-format use clang-format to do this job in vim.
+    "
+    " For cpp files, we could use https://www.vim.org/scripts/script.php?script_id=2636
+    " indent script, rename it to cpp.vim and place into ~/.vim/indent/
+    " directory. This could be done in easyvim's bootstrap.sh.
+    "
+    " alternatives: google/vim-codefmt support other formatters than
+    " clang-format, might be a better choice.
+    " Plug 'google/vim-maktaba'
+    " Plug 'google/vim-codefmt'
 
     Plug 'ntpeters/vim-better-whitespace'
     "This plugin causes all trailing whitespace characters to be highlighted.
