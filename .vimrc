@@ -403,6 +403,19 @@
     "www.vim.org.
     let g:rainbow_active = 1
     "set to 0 if you want to enable it later via :RainbowToggle
+    let g:rainbow_conf = {
+                    \   'separately': {
+                    \       'cmake': 0,
+                    \   }
+                    \}
+
+    Plug 'pboettch/vim-cmake-syntax'
+    " Vim syntax highlighting rules for modern CMakeLists.txt.
+    " Turning on rainbow breaks cmake syntax highlighting, we must disable
+    " the rainbow plugin for CMake files.
+
+
+
 
     " Plug 'godlygeek/tabular'
     "Sometimes, it's useful to line up text. Naturally, it's nicer to
