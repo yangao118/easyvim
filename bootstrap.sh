@@ -95,11 +95,6 @@ install_plugin_manager() {
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
-install_cpp_google_style() {
-    curl -fLo ~/.vim/indent/cpp.vim --create-dirs \
-        https://raw.githubusercontent.com/vim-scripts/google.vim/master/indent/google.vim
-}
-
 setup_plugin() {
     local system_shell="$SHELL"
     export SHELL='/bin/sh'
@@ -143,8 +138,6 @@ create_symlinks "$APP_PATH" \
 install_plugin_manager
 
 setup_plugin
-
-install_cpp_google_style
 
 msg             "\nThanks for installing $app_name."
 msg             "© `date +%Y` https://github.com/yangao118/easyvim"

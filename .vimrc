@@ -610,10 +610,6 @@
     " perfect, we must use code formatter to comply with certain code style
     " after editing. vim-clang-format use clang-format to do this job in vim.
     "
-    " For cpp files, we could use https://www.vim.org/scripts/script.php?script_id=2636
-    " indent script, rename it to cpp.vim and place into ~/.vim/indent/
-    " directory. This could be done in easyvim's bootstrap.sh.
-    "
     " alternatives: google/vim-codefmt support other formatters than
     " clang-format, might be a better choice.
     " Plug 'google/vim-maktaba'
