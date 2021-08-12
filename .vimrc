@@ -819,6 +819,12 @@
     map <leader>ev :vsp %%
     map <leader>et :tabe %%
 
+    map <leader>td :Leaderf gtags -d <C-R><C-W><CR>
+    map <leader>tr :Leaderf gtags -r <C-R><C-W><CR>
+    map <leader>ts :Leaderf gtags -s <C-R><C-W><CR>
+    map <leader>tg :Leaderf gtags -g <C-R><C-W><CR>
+    map <leader>rg :Leaderf rg <C-R><C-W><CR>
+
     " Adjust viewports to the same size
     map <Leader>= <C-w>=
 
