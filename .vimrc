@@ -148,8 +148,16 @@
 
 " Vim UI {
 
-    color desert                    " Load a colorscheme
+    colorscheme solarized                     " Load a colorscheme
+    " some nice colorschemes:
+    " https://github.com/altercation/solarized
+    let g:solarized_termcolors=256
+    " https://github.com/tomasr/molokai
+    " let g:rehash256=1
+    " https://github.com/rakr/vim-one
+    " https://github.com/morhetz/gruvbox
 
+    set background=dark
     set tabpagemax=15               " Only show 15 tabs
     set showmode                    " Display the current mode
 
