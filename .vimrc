@@ -148,7 +148,8 @@
 
 " Vim UI {
 
-    colorscheme solarized                     " Load a colorscheme
+    "colorscheme solarized                     " Load a colorscheme
+    colorscheme desert
     " some nice colorschemes:
     " https://github.com/altercation/solarized
     let g:solarized_termcolors=256
@@ -514,9 +515,9 @@
     highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
     highlight PMenuSel ctermfg=242 ctermbg=0 guifg=darkgrey guibg=black
 
-    " let g:ycm_show_diagnostics_ui = 0 "will also disable ale diagnostics
-    " let g:ycm_enable_diagnostic_signs = 0
-    " let g:ycm_enable_diagnostic_highlighting = 0
+    let g:ycm_show_diagnostics_ui = 0 "will also disable ale diagnostics
+    let g:ycm_enable_diagnostic_signs = 0
+    let g:ycm_enable_diagnostic_highlighting = 0
     let g:ycm_error_symbol = 'E'
     let g:ycm_warning_symbol = 'W'
     hi! clear SpellBad
@@ -534,7 +535,7 @@
     let g:ycm_collect_identifiers_from_comments_and_strings = 1
     let g:ycm_complete_in_strings = 1
     let g:ycm_complete_in_comments = 1
-    let g:ycm_collect_identifiers_from_tags_files = 1
+    let g:ycm_collect_identifiers_from_tags_files = 0
     let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
     let g:ycm_key_invoke_completion = '<c-z>'
