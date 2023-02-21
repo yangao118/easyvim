@@ -791,6 +791,19 @@
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
 
+    " Tab switching
+    nnoremap <Leader>1 1gt
+    nnoremap <Leader>2 2gt
+    nnoremap <Leader>3 3gt
+    nnoremap <Leader>4 4gt
+    nnoremap <Leader>5 5gt
+    nnoremap <Leader>6 6gt
+    nnoremap <Leader>7 7gt
+    nnoremap <Leader>8 8gt
+    nnoremap <Leader>9 8gt
+    nnoremap <Leader>0 :tablast<CR>
+
+
     " Most prefer to toggle search highlighting rather than clear the current
     " search results. To clear search highlighting rather than toggle it on
     " and off, add the following:
