@@ -68,7 +68,7 @@
 " General {
 
     " if !has('gui')
-        "set term=$TERM          " Make arrow and other keys work
+    "     set term=$TERM          " Make arrow and other keys work
     " endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
@@ -92,12 +92,12 @@
         " Always switch to the current file directory
     endif
 
-    "set autowrite                       " Automatically write a file when leaving a modified buffer
+    " set autowrite                       " Automatically write a file when leaving a modified buffer
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    "set spell                           " Spell checking on
+    " set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
@@ -110,7 +110,7 @@
     " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
     " Restore cursor to file position in previous editing session
     " To disable this, add the following:
-    "   let g:spf13_no_restore_cursor = 1
+    " let g:spf13_no_restore_cursor = 1
     if !exists('g:spf13_no_restore_cursor')
         function! ResCur()
             if line("'\"") <= line("$")
@@ -134,7 +134,7 @@
         endif
 
         " To disable views add the following:
-        "   let g:spf13_no_views = 1
+        " let g:spf13_no_views = 1
         if !exists('g:spf13_no_views')
             " Add exclusions to mkview and loadview
             " eg: *.*, svn-commit.tmp
@@ -148,15 +148,8 @@
 
 " Vim UI {
 
-    "colorscheme solarized                     " Load a colorscheme
+    " colorscheme solarized          " Load a colorscheme
     colorscheme desert
-    " some nice colorschemes:
-    " https://github.com/altercation/solarized
-    let g:solarized_termcolors=256
-    " https://github.com/tomasr/molokai
-    " let g:rehash256=1
-    " https://github.com/rakr/vim-one
-    " https://github.com/morhetz/gruvbox
 
     set background=dark
     set tabpagemax=15               " Only show 15 tabs
@@ -166,7 +159,7 @@
 
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
-    "highlight clear CursorLineNr    " Remove highlight color from current line number
+    " highlight clear CursorLineNr    " Remove highlight color from current line number
 
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -215,7 +208,7 @@
         if &term == 'xterm' || &term == 'screen'
             set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
         endif
-        "set term=builtin_ansi       " Make arrow and other keys work
+        " set term=builtin_ansi       " Make arrow and other keys work
     endif
 
 " }
@@ -227,16 +220,16 @@
     set shiftwidth=4                " Use indents of 4 spaces
     set tabstop=4                   " An indentation every four columns
     set softtabstop=4               " Let backspace delete indent
-    "set expandtab                   " Tabs are spaces, not tabs
+    " set expandtab                   " Tabs are spaces, not tabs
     set noexpandtab
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
-    "set matchpairs+=<:>             " Match, to be used with %
+    " set matchpairs+=<:>             " Match, to be used with %
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-    "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+    " set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 
-    "autocmd FileType go autocmd BufWritePre <buffer> Fmt
+    " autocmd FileType go autocmd BufWritePre <buffer> Fmt
     autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
     autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
     " preceding line best in a plugin but here for now.
@@ -256,14 +249,14 @@
 
     Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
     nmap <leader>n :NERDTreeToggle<CR>
-    "The NERD tree allows you to explore your filesystem and to open
-    "files and directories. It presents the filesystem to you in the
-    "form of a tree which you manipulate with the keyboard and/or
-    "mouse. It also allows you to perform simple filesystem
-    "operations.
+    " The NERD tree allows you to explore your filesystem and to open
+    " files and directories. It presents the filesystem to you in the
+    " form of a tree which you manipulate with the keyboard and/or
+    " mouse. It also allows you to perform simple filesystem
+    " operations.
     "
-    "Should use :edit . (built-in plugin netrw), see the following:
-    "http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
+    " Should use :edit . (built-in plugin netrw) ???, see the following:
+    " http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
 
     Plug 'itchyny/lightline.vim'
     let g:lightline = {
@@ -277,112 +270,72 @@
       \ }
 
     Plug 'tpope/vim-fugitive'
-    "I'm not going to lie to you; fugitive.vim may very well be the
-    "best Git wrapper of all time.
+    " I'm not going to lie to you; fugitive.vim may very well be the
+    " best Git wrapper of all time.
 
     Plug 'tpope/vim-surround'
-    "Surround.vim is all about "surroundings": parentheses, brackets,
-    "quotes, XML tags, and more. The plugin provides mappings to
-    "easily delete, change and add such surroundings in pairs.
-    "e.g. use ds* to delete a word surrounded by *.
+    " Surround.vim is all about "surroundings": parentheses, brackets,
+    " quotes, XML tags, and more. The plugin provides mappings to
+    " easily delete, change and add such surroundings in pairs.
+    " e.g. use ds* to delete a word surrounded by *.
 
     Plug 'tpope/vim-commentary'
-    "Comment stuff out. Use gcc to comment out a line (takes a count),
-    "gc to comment out the target of a motion (for example, gcap to
-    "comment out a paragraph), gc in visual mode to comment out the
-    "selection, and gc in operator pending mode to target a comment.
-    "You can also use it as a command, either with a range like
-    ":7,17Commentary, or as part of a :global invocation like with
-    ":g/TODO/Commentary. That's it.
+    " Comment stuff out. Use gcc to comment out a line (takes a count),
+    " gc to comment out the target of a motion (for example, gcap to
+    " comment out a paragraph), gc in visual mode to comment out the
+    " selection, and gc in operator pending mode to target a comment.
+    " You can also use it as a command, either with a range like
+    " :7,17Commentary, or as part of a :global invocation like with
+    " :g/TODO/Commentary. That's it.
     "
-    "alternatives: preservim/nerdcommenter, not good for nested comments.
+    " alternatives: preservim/nerdcommenter, not good for nested comments.
 
     Plug 'tpope/vim-repeat'
-    "If you've ever tried using the . command after a plugin map, you
-    "were likely disappointed to discover it only repeated the last
-    "native command inside that map, rather than the map as a whole.
-    "That disappointment ends today. Repeat.vim remaps . in a way that
-    "plugins can tap into it.
+    " If you've ever tried using the . command after a plugin map, you
+    " were likely disappointed to discover it only repeated the last
+    " native command inside that map, rather than the map as a whole.
+    " That disappointment ends today. Repeat.vim remaps . in a way that
+    " plugins can tap into it.
 
-    Plug 'mg979/vim-visual-multi'
-    "It's called vim-visual-multi in analogy with visual-block,
-    "but the plugin works mostly from normal mode.
+    " Plug 'mg979/vim-visual-multi'
+    " It's called vim-visual-multi in analogy with visual-block,
+    " but the plugin works mostly from normal mode.
     "
-    "alternatives: 'terryma/vim-multiple-cursors': deprecated
+    " alternatives: 'terryma/vim-multiple-cursors': deprecated
 
-    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/fzf', { 'do' : { -> fzf#install() } }
     " An efficient fuzzy finder that helps to locate files, buffers, mrus,
-    " gtags, etc. on the fly. ctrlp is out-of-date, fzf is hard to install.
-
-    let g:Lf_ShortcutF = '<c-p>'
-    " noremap <leader>tt :LeaderfFunction!<cr>
-    let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
-    let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git', '.hg']
-    let g:Lf_WorkingDirectoryMode = 'Ac'
-    let g:Lf_WindowHeight = 0.30
-    let g:Lf_CacheDirectory = expand('~/.vim/cache')
-    let g:Lf_ShowRelativePath = 0
-
-    " gtags settings:
+    " gtags, etc. on the fly.
     "
-    " use gutentags to auto generate gtags, but use Leaderf gtags to invoke
-    " gtags instead of vim-scripts/gtags.vim, to do so, must also set
-    " gutentags' cache directory: g:gutentags_cache_dir to LeaderF's default
-    " gtags search path.
-
-    let g:Lf_GtagsAutoGenerate = 0
-    let g:Lf_GtagsGutentags = 1
-    let $GTAGSLABEL = 'native-pygments'
-
-    " use LeaderF to auto generate gtags
-    " let g:Lf_GtagsAutoGenerate = 1
-    " let Lf_GtagsGutentags = 0
-    " let g:Lf_Gtagslabel = 'native-pygments'
-
-
+    " alternatives: Yggdroot/LeaderF
 
     Plug 'majutsushi/tagbar'
-    nmap <F8> :TagbarToggle<CR>
     nmap <leader>tt :TagbarToggle<CR>
-    "Tagbar is a Vim plugin that provides an easy way to browse
-    "the tags of the current file and get an overview of its
-    "structure. It does this by creating a sidebar that displays
-    "the ctags-generated tags of the current file, ordered by
-    "their scope. This means that for example methods in C++ are
-    "displayed under the class they are defined in.
-    "
-    "alternatives: vim-scripts/taglist.vim
-    "
-    "LeaderfFunction! could partially cover tagbar functionality, but not in
-    "the perfect way, turn on tagbar by default. In some cases, where the
-    "source code is huge, tagbar could cause a explicit lag, because tagbar
-    "will use ctags to generate tags for the current buffer. If this causes a
-    "problem, turn off tagbar by hand then.
+    " Tagbar is a Vim plugin that provides an easy way to browse
+    " the tags of the current file and get an overview of its
+    " structure. It does this by creating a sidebar that displays
+    " the ctags-generated tags of the current file, ordered by
+    " their scope. This means that for example methods in C++ are
+    " displayed under the class they are defined in.
 
-    " if executable('ag')
-    "     Plug 'mileszs/ack.vim'
-    "     let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-    " elseif executable('ack-grep')
-    "     let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-    "     Plug 'mileszs/ack.vim'
-    " elseif executable('ack')
-    "     Plug 'mileszs/ack.vim'
-    " endif
-    "
-    " Leaderf rg rg-arguments: work altogether with rg(ripgrep), a much
-    " better choice. Requires ripgrep installed.
+    " alternatives: vim-scripts/taglist.vim
+
+    " If source code is huge, tagbar could cause a explicit lag, because tagbar
+    " will use ctags to generate tags for the current buffer. If this causes a
+    " problem, turn off tagbar by hand then.
 
     Plug 'ervandew/supertab'
-    "Supertab is a vim plugin which allows you to use <Tab> for all
-    "your insert completion needs (:help ins-completion).
+    " Supertab is a vim plugin which allows you to use <Tab> for all
+    " your insert completion needs (:help ins-completion).
     let g:SuperTabDefaultCompletionType = '<C-n>'
     " let g:SuperTabRetainCompletionType = 2
 
     Plug 'jiangmiao/auto-pairs'
-    "Insert or delete brackets, parens, quotes in pair.
+    " Insert or delete brackets, parens, quotes in pair.
 
     Plug 'mbbill/undotree'
-    "The ultimate undo history visualizer for VIM
+    " The ultimate undo history visualizer for VIM
     nnoremap <F5> :UndotreeToggle<cr>
 
     if has('nvim') || has('patch-8.0.902')
@@ -390,29 +343,29 @@
     else
         Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
     endif
-    "Signify (or just Sy) is a quite unobtrusive plugin. It uses signs
-    "to indicate added, modified and removed lines based on data of an
-    "underlying version control system.
+    " Signify (or just Sy) is a quite unobtrusive plugin. It uses signs
+    " to indicate added, modified and removed lines based on data of an
+    " underlying version control system.
     "
-    "It's fast, easy to use and well documented.
+    " It's fast, easy to use and well documented.
     "
-    "NOTE: If git is the only version control system you use, I
-    "suggest having a look at vim-gitgutter.
+    " NOTE: If git is the only version control system you use, I
+    " suggest having a look at vim-gitgutter.
     "
     " Plug 'airblade/vim-gitgutter'
     set updatetime=1000
 
     Plug 'haya14busa/is.vim'
-    "is.vim improves search feature. is.vim is successor of incsearch.vim.
+    " is.vim improves search feature. is.vim is successor of incsearch.vim.
 
     Plug 'luochen1990/rainbow'
-    "As everyone knows, the most complex codes were composed of a mass
-    "of different kinds of parentheses(typically: lisp). This plugin
-    "will help you read these codes by showing different levels of
-    "parentheses in different colors. you can also find this plugin in
-    "www.vim.org.
+    " As everyone knows, the most complex codes were composed of a mass
+    " of different kinds of parentheses(typically: lisp). This plugin
+    " will help you read these codes by showing different levels of
+    " parentheses in different colors. you can also find this plugin in
+    " www.vim.org.
     let g:rainbow_active = 1
-    "set to 0 if you want to enable it later via :RainbowToggle
+    " set to 0 if you want to enable it later via :RainbowToggle
     let g:rainbow_conf = {
                     \   'separately': {
                     \       'cmake': 0,
@@ -425,18 +378,9 @@
     " the rainbow plugin for CMake files.
 
 
-
-
-    " Plug 'godlygeek/tabular'
-    "Sometimes, it's useful to line up text. Naturally, it's nicer to
-    "have the computer do this for you, since aligning things by hand
-    "quickly becomes unpleasant.
-    "
-    "alternatives: junegunn/vim-easy-align
-
     Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-    "This plugin adds Go language support for Vim, comment it if you don't
-    "want golang support.
+    " This plugin adds Go language support for Vim, comment it if you don't
+    " want golang support.
     "
     " vim-go does not support GO111MODULE="auto" well, besides YouCompleteMe
     " (when installed with --go-completer) will install and use its own gopls,
@@ -458,8 +402,14 @@
     " Aha, recipe for happy editing golang with vim: use go module!
 
     Plug 'junegunn/vim-easy-align'
-    "A simple, easy-to-use Vim alignment plugin.
+    " Sometimes, it's useful to line up text. Naturally, it's nicer to
+    " have the computer do this for you, since aligning things by hand
+    " quickly becomes unpleasant.
+    "
     " Start interactive EasyAlign in visual mode (e.g. vipga)
+    "
+    " alternatives: godlygeek/tabular
+
     xmap ga <Plug>(EasyAlign)
 
     " Start interactive EasyAlign for a motion/text object (e.g. gaip)
@@ -479,10 +429,10 @@
     " 4.Delimiter key (a single keystroke; <Space>, =, :, ., |, &, #, ,) or an arbitrary regular expression followed by <CTRL-X>
 
     Plug 'ludovicchabant/vim-gutentags'
-    "Gutentags is a plugin that takes care of the much needed management
-    "of tags files in Vim. It will (re)generate tag files as you work
-    "while staying completely out of your way. It will even do its best
-    "to keep those tag files out of your way too. It has no dependencies and just works.
+    " Gutentags is a plugin that takes care of the much needed management
+    " of tags files in Vim. It will (re)generate tag files as you work
+    " while staying completely out of your way. It will even do its best
+    " to keep those tag files out of your way too. It has no dependencies and just works.
     " set tags=./.tags;,.tags " gutentags will automatically set tags
     let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
     let g:gutentags_ctags_tagfile = '.tags'
@@ -496,10 +446,6 @@
         let g:gutentags_modules += ['gtags_cscope']
     endif
 
-    " to use Leaderf gtags:
-    let g:gutentags_cache_dir = expand(g:Lf_CacheDirectory.'/.LfCache/gtags')
-    let g:gutentags_auto_add_gtags_cscope = 0
-
     " for exuberant-ctags, remove --extra=+q
     let g:gutentags_ctags_extra_args = ['--fields=+lniazS', '--extra=+q']
     let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
@@ -509,14 +455,14 @@
     let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
     Plug 'ycm-core/YouCompleteMe'
-    "YouCompleteMe: a code-completion engine for Vim
-    "install: python3 install.py --clangd-completer --go-completer
+    " YouCompleteMe: a code-completion engine for Vim
+    " install: python3 install.py --clangd-completer --go-completer
 
-    "setup popup windows colorscheme
+    " setup popup windows colorscheme
     highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
     highlight PMenuSel ctermfg=242 ctermbg=0 guifg=darkgrey guibg=black
 
-    let g:ycm_show_diagnostics_ui = 0 "will also disable ale diagnostics
+    let g:ycm_show_diagnostics_ui = 0 " will also disable ale diagnostics
     let g:ycm_enable_diagnostic_signs = 0
     let g:ycm_enable_diagnostic_highlighting = 0
     let g:ycm_error_symbol = 'E'
@@ -582,27 +528,17 @@
     " alternatives: use "bear make" in project directory to generate
     " generate compile_commands.json, which ycm could use instead.
 
-    Plug 'SirVer/ultisnips'
-    " Track the engine.
-
-    Plug 'honza/vim-snippets'
-    " Snippets are separated from the engine. Add this if you want them:
-
-    " Trigger configuration. You need to change this to something else than <tab>
-    " if you use https://github.com/Valloric/YouCompleteMe.
-    let g:UltiSnipsExpandTrigger="<c-j>"
-
     Plug 'Shougo/echodoc.vim'
-    "Displays function signatures from completions in the command line
+    " Displays function signatures from completions in the command line
     set cmdheight=2
     let g:echodoc_enable_at_startup = 1
 
     Plug 'octol/vim-cpp-enhanced-highlight'
-    "This file contains additional syntax highlighting that I use for C++11/14/17 development in Vim.
+    " This file contains additional syntax highlighting that I use for C++11/14/17 development in Vim.
 
     Plug 'vivien/vim-linux-coding-style'
-    "This plugin is meant to help you respecting the Linux kernel coding style,
-    "described at: https://www.kernel.org/doc/Documentation/process/coding-style.rst
+    " This plugin is meant to help you respecting the Linux kernel coding style,
+    " described at: https://www.kernel.org/doc/Documentation/process/coding-style.rst
     let g:linuxsty_patterns = [ "/usr/src/", "/linux" ]
 
     " The linux kernel coding style is quite different from GNU C style:
@@ -612,24 +548,11 @@
     " vivien/vim-linux-coding-style is like indent script, which does not
     " autoload depending on file type, but depending on more other conditions.
 
-    Plug 'rhysd/vim-clang-format'
-    "This plugin formats your code with specific coding style using clang-format.
-    let g:clang_format#code_style = "google"
-
-    " Indent scripts take effects when editing, but those scripts are not
-    " perfect, we must use code formatter to comply with certain code style
-    " after editing. vim-clang-format use clang-format to do this job in vim.
-    "
-    " alternatives: google/vim-codefmt support other formatters than
-    " clang-format, might be a better choice.
-    " Plug 'google/vim-maktaba'
-    " Plug 'google/vim-codefmt'
-
     Plug 'ntpeters/vim-better-whitespace'
-    "This plugin causes all trailing whitespace characters to be highlighted.
-    "Whitespace for the current line will not be highlighted while in insert mode.
-    "It is possible to disable current line highlighting while in other modes as well.
-    "A helper function :StripWhitespace is also provided to make whitespace cleaning painless.
+    " This plugin causes all trailing whitespace characters to be highlighted.
+    " Whitespace for the current line will not be highlighted while in insert mode.
+    " It is possible to disable current line highlighting while in other modes as well.
+    " A helper function :StripWhitespace is also provided to make whitespace cleaning painless.
 
     " Initialize plugin system
     call plug#end()
@@ -791,19 +714,6 @@
     nmap <leader>f8 :set foldlevel=8<CR>
     nmap <leader>f9 :set foldlevel=9<CR>
 
-    " Tab switching
-    nnoremap <Leader>1 1gt
-    nnoremap <Leader>2 2gt
-    nnoremap <Leader>3 3gt
-    nnoremap <Leader>4 4gt
-    nnoremap <Leader>5 5gt
-    nnoremap <Leader>6 6gt
-    nnoremap <Leader>7 7gt
-    nnoremap <Leader>8 8gt
-    nnoremap <Leader>9 8gt
-    nnoremap <Leader>0 :tablast<CR>
-
-
     " Most prefer to toggle search highlighting rather than clear the current
     " search results. To clear search highlighting rather than toggle it on
     " and off, add the following:
@@ -841,12 +751,6 @@
     map <leader>es :sp %%
     map <leader>ev :vsp %%
     map <leader>et :tabe %%
-
-    map <leader>td :Leaderf gtags -d <C-R><C-W><CR>
-    map <leader>tr :Leaderf gtags -r <C-R><C-W><CR>
-    map <leader>ts :Leaderf gtags -s <C-R><C-W><CR>
-    map <leader>tg :Leaderf gtags -g <C-R><C-W><CR>
-    map <leader>rg :Leaderf rg <C-R><C-W><CR>
 
     " Adjust viewports to the same size
     map <Leader>= <C-w>=
