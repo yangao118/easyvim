@@ -103,6 +103,9 @@
     set iskeyword-=#                    " '#' is an end of word designator
     set iskeyword-=-                    " '-' is an end of word designator
 
+    set grepprg=rg\ --vimgrep\ --smart-case\ --follow " ripgrep as grepprg
+    set relativenumber number           " Display current line number and relative line numbers
+
     " Instead of reverting the cursor to the last position in the buffer, we
     " set it to the first line when editing a git commit message
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
@@ -309,6 +312,8 @@
     " gtags, etc. on the fly.
     "
     " alternatives: Yggdroot/LeaderF
+    let g:fzf_layout = { 'window': '15new' }
+
 
     Plug 'majutsushi/tagbar'
     nmap <leader>tt :TagbarToggle<CR>
@@ -490,29 +495,6 @@
     let g:ycm_add_preview_to_completeopt = 0
     set completeopt=menu,menuone
 
-    " diagnostics filter for linux kernel development
-    let g:ycm_filter_diagnostics = {
-                \ "c": {
-                \   "regex": [
-                \     "-mno-fp-ret-in-387",
-                \     "-mpreferred-stack-boundary=3",
-                \     "-mskip-rax-setup",
-                \     "-mindirect-branch=thunk-extern",
-                \     "-mindirect-branch-register",
-                \     "-fno-allow-store-data-races",
-                \     "-fplugin-arg-structleak_plugin-byref-all",
-                \     "-fno-var-tracking-assignments",
-                \     "-fconserve-stack",
-                \     "-mrecord-mcount"
-                \   ]
-                \ }
-                \}
-
-    let g:ycm_semantic_triggers =  {
-                \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-                \ 'cs,lua,javascript': ['re!\w{2}'],
-                \ }
-
     Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
     " This is a script which generates a list of compiler flags from a project with an arbitrary build system. It can be used to:
 
@@ -632,13 +614,20 @@
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
     " If you prefer that functionality, add the following:
-    "   let g:spf13_no_easyWindows = 1
+    let g:spf13_no_easyWindows = 1
     if !exists('g:spf13_no_easyWindows')
         map <C-J> <C-W>j
         map <C-K> <C-W>k
         map <C-L> <C-W>l
         map <C-H> <C-W>h
     endif
+
+    " fzf key mappings
+    nnoremap <leader>f :Files<cr>
+    nnoremap <leader>b :Buffers<cr>
+    nnoremap <leader>r :Rg<cr>
+    nnoremap <leader>rg :Rg <C-R><C-W><cr>
+
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     noremap j gj
@@ -724,6 +713,9 @@
         nmap <silent> <leader>/ :set invhlsearch<CR>
     endif
 
+    " Insert undo breakpoints
+    inoremap <c-u> <c-g>u<c-u>
+    inoremap <c-w> <c-g>u<c-w>
 
     " Find merge conflict markers
     map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
